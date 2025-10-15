@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elif Vildan Tedik - Portfolyo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-gradient-1: #667eea;
+            --bg-gradient-2: #764ba2;
+            --header-gradient-1: #1e3c72;
+            --header-gradient-2: #2a5298;
+            --bg-color: #ffffff;
+            --text-color: #2c3e50;
+            --card-bg: #f8f9fa;
+            --border-color: #e0e0e0;
+            --title-color: #1e3c72;
+            --accent-color: #667eea;
+        }
+
+        body.dark-mode {
+            --bg-gradient-1: #1a1a2e;
+            --bg-gradient-2: #16213e;
+            --header-gradient-1: #0f1419;
+            --header-gradient-2: #1a1f2e;
+            --bg-color: #1e1e1e;
+            --text-color: #e0e0e0;
+            --card-bg: #2d2d2d;
+            --border-color: #404040;
+            --title-color: #64b5f6;
+            --accent-color: #90caf9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, var(--bg-gradient-1) 0%, var(--bg-gradient-2) 100%);
+            min-height: 100vh;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: var(--bg-color);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            transition: background 0.3s ease;
+        }
+
+        .controls {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            gap: 15px;
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .control-btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            background: var(--accent-color);
+            color: white;
+        }
+
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--header-gradient-1) 0%, var(--header-gradient-2) 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+            position: relative;
+            transition: background 0.3s ease;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 6px solid white;
+            object-fit: cover;
+            object-position: center;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+            margin-bottom: 25px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 0.95em;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .content {
+            padding: 50px 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: var(--title-color);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: color 0.3s ease;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+        }
+
+        .project-card h3 {
+            color: var(--title-color);
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        .project-card .tech-stack {
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+
+        .project-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .project-card li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: var(--text-color);
+        }
+
+        .project-card li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 2px solid var(--border-color);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--bg-gradient-2) 100%);
+            padding: 25px;
+            border-radius: 12px;
+            color: white;
+        }
+
+        .skill-category h3 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .skill-category p {
+            font-size: 0.95em;
+            line-height: 1.8;
+        }
+
+        .education-box {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .education-box h3 {
+            font-size: 1.6em;
+            margin-bottom: 10px;
+        }
+
+        .education-box p {
+            font-size: 1.1em;
+            opacity: 0.95;
+            margin: 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            .controls {
+                top: 10px;
+                right: 10px;
+                padding: 10px;
+                gap: 10px;
+            }
+
+            .control-btn {
+                padding: 8px 12px;
+                font-size: 0.85em;
+            }
+
+            .header {
+                padding: 40px 20px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button class="control-btn" id="themeToggle">🌙 Dark Mode</button>
+        <button class="control-btn" id="langToggle">🌐 English</button>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <img src="https://raw.githubusercontent.com/vildantedik/portfolio-images/main/pp.png" alt="Elif Vildan Tedik" class="profile-img">
+            <h1 id="name">ELİF VİLDAN TEDİK</h1>
+            <p id="title">Bilgisayar Mühendisi | Yapay Zeka</p>
+            <div class="contact-info">
+                <span>📧 <a href="mailto:vildan.tedik@gmail.com" style="color: white; text-decoration: none;">vildan.tedik@gmail.com</a></span>
+                <span>📱 0534-676-91-81</span>
+                <span id="location">📍 Ankara, Türkiye</span>
+                <span>💼 <a href="https://www.linkedin.com/in/elif-vildan-tedik-b83533285/" target="_blank" style="color: white; text-decoration: none;">LinkedIn</a></span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="section">
+                <h2 class="section-title" id="projectsTitle">🎯 Projeler</h2>
+
+                <div class="project-grid">
+                    <div class="project-card">
+                        <h3 id="project1Title">Derin Öğrenme Tabanlı Yüz Tanıma Sistemi</h3>
+                        <p class="tech-stack">Python • TensorFlow • Keras • NumPy • Matplotlib</p>
+                        <ul id="project1List">
+                            <li>CNN (Evrişimsel Sinir Ağı) tabanlı kimlik doğrulama sistemi geliştirildi.</li>
+                            <li>Girdi görselinin veri setinde var olup olmadığını tespit eden ve en çok benzediği kişiyi benzerlik yüzdesiyle belirleyen model tasarlandı.</li>
+                            <li>Gerçek zamanlı yüz tanıma görevlerinde yüksek doğruluk oranı elde edildi.</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="https://raw.githubusercontent.com/vildantedik/portfolio-images/main/foto-2.jpg" alt="Arduino Project" class="project-image">
+                        <h3 id="project2Title">Duysens: Vertigo Hastaları İçin Arduino Uyarı Sistemi</h3>
+                        <p class="tech-stack">Arduino  • C/C++</p>
+                        <ul id="project2List">
+                            <li>Vertigo hastalarının güvenliğini artıran hibrit donanım-yazılım sistemi tasarlandı.</li>
+                            <li>Arduino tabanlı cihaz, belirli hareket eşiğinin aşılmasını tespit ederek kullanıcıyı uyarır.</li>
+                            <li>Kullanıcıların durumları kötüleşmeden önce ortamı güvenli şekilde terk etmelerini sağlar.</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="https://raw.githubusercontent.com/vildantedik/portfolio-images/main/foto-1.jpg" alt="Articulate Project" class="project-image">
+                        <h3 id="project3Title">Articulate – Etkileşimli Eğitim İçeriği Uygulaması</h3>
+                        <p class="tech-stack">Python • TensorFlow • Web Teknolojileri</p>
+                        <ul id="project3List">
+                            <li>Eğitim gösterimlerine odaklanan interaktif içerik uygulaması geliştirildi.</li>
+                            <li>TensorFlow'un temel kavramlarını tanıtan, kullanıcı anlayışını artıran etkileşimli arayüz tasarlandı.</li>
+                            <li>Pratik örneklerle desteklenen öğrenme modülleri oluşturuldu.</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
+                        <img src="https://raw.githubusercontent.com/vildantedik/portfolio-images/main/foto-3.jpg" alt="NASA Weather Project" class="project-image">
+                        <h3 id="project4Title">NASA Verisi Kullanarak Meteorolojik Tahmin ve Akıllı Chatbot Sistemi</h3>
+                        <p class="tech-stack">Python (Flask) • JavaScript • HTML/CSS • NASA POWER API • Prophet • React</p>
+                        <ul id="project4List">
+                            <li>NASA POWER API verileri kullanılarak meteorolojik tahminler üreten web uygulaması geliştirildi.</li>
+                            <li>Backend Python ve Flask ile, frontend HTML, CSS ve JavaScript ile geliştirildi.</li>
+                            <li>5 günlük hava tahminlerine dayalı kişiselleştirilmiş öneriler sunan chatbot entegre edildi.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title" id="skillsTitle">💡 Teknik Yetenekler</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3 id="skill1Title">Programlama Dilleri</h3>
+                        <p>Python • C • C++ • Java • SQL • C#</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3 id="skill2Title">Framework & Araçlar</h3>
+                        <p>OpenCv•TensorFlow • Keras • Qt • Flask • React</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3 id="skill3Title">Uzmanlık Alanları</h3>
+                        <p id="skill3Text">Yapay Zeka • Derin Öğrenme • Gömülü Sistemler • Web Geliştirme</p>
+                    </div>
+                    <div class="skill-category">
+                        <h3 id="skill4Title">Diller</h3>
+                        <p id="skill4Text">Türkçe (Ana Dil) • İngilizce (Orta Seviye)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title" id="educationTitle">🎓 Eğitim</h2>
+                <div class="education-box">
+                    <h3>Necmettin Erbakan Üniversitesi</h3>
+                    <p><strong id="eduDept">Bölüm:</strong> Bilgisayar Mühendisliği</p>
+                    <p><strong id="eduPeriod">Dönem:</strong> <span id="eduDate">Eylül 2022 - Haziran 2026</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const translations = {
+            tr: {
+                themeBtn: '🌙 Dark Mode',
+                themeBtnDark: '☀️ Light Mode',
+                langBtn: '🌐 English',
+                title: 'Bilgisayar Mühendisi | Yapay Zeka',
+                location: '📍 Ankara, Türkiye',
+                projectsTitle: '🎯 Projeler ve Başarılar',
+                project1Title: 'Derin Öğrenme Tabanlı Yüz Tanıma Sistemi',
+                project1List: [
+                    'CNN (Evrişimsel Sinir Ağı) tabanlı kimlik doğrulama sistemi geliştirildi',
+                    'Girdi görselinin veri setinde var olup olmadığını tespit eden ve en çok benzediği kişiyi benzerlik yüzdesiyle belirleyen model tasarlandı',
+                    'Gerçek zamanlı yüz tanıma görevlerinde yüksek doğruluk oranı elde edildi'
+                ],
+                project2Title: 'Duysens: Vertigo Hastaları İçin Arduino Uyarı Sistemi',
+                project2List: [
+                    'Vertigo hastalarının güvenliğini artıran hibrit donanım-yazılım sistemi tasarlandı',
+                    'Arduino tabanlı cihaz, belirli hareket eşiğinin aşılmasını tespit ederek kullanıcıyı uyarır',
+                    'Kullanıcıların durumları kötüleşmeden önce ortamı güvenli şekilde terk etmelerini sağlar'
+                ],
+                project3Title: 'Articulate – Etkileşimli Eğitim İçeriği Uygulaması',
+                project3List: [
+                    'Eğitim gösterimlerine odaklanan interaktif içerik uygulaması geliştirildi',
+                    'TensorFlow\'un temel kavramlarını tanıtan, kullanıcı anlayışını artıran etkileşimli arayüz tasarlandı',
+                    'Pratik örneklerle desteklenen öğrenme modülleri oluşturuldu'
+                ],
+                project4Title: 'NASA Verisi Kullanarak Meteorolojik Tahmin ve Akıllı Chatbot Sistemi',
+                project4List: [
+                    'NASA POWER API verileri kullanılarak meteorolojik tahminler üreten web uygulaması geliştirildi',
+                    'Backend Python ve Flask ile, frontend HTML, CSS ve JavaScript ile geliştirildi',
+                    '5 günlük hava tahminlerine dayalı kişiselleştirilmiş öneriler sunan chatbot entegre edildi'
+                ],
+                skillsTitle: '💡 Teknik Yetenekler',
+                skill1Title: 'Programlama Dilleri',
+                skill2Title: 'Framework & Araçlar',
+                skill3Title: 'Uzmanlık Alanları',
+                skill3Text: 'Yapay Zeka • Derin Öğrenme • Gömülü Sistemler • Web Geliştirme',
+                skill4Title: 'Diller',
+                skill4Text: 'Türkçe (Ana Dil) • İngilizce (Orta Seviye)',
+                educationTitle: '🎓 Eğitim',
+                eduDept: 'Bölüm:',
+                eduPeriod: 'Dönem:',
+                eduDate: 'Eylül 2022 - Haziran 2026'
+            },
+            en: {
+                themeBtn: '🌙 Dark Mode',
+                themeBtnDark: '☀️ Light Mode',
+                langBtn: '🌐 Türkçe',
+                title: 'Computer Engineer | Artificial Intelligence',
+                location: '📍 Ankara, Turkey',
+                projectsTitle: '🎯 Projects',
+                project1Title: 'Deep Learning-Based Face Recognition System',
+                project1List: [
+                    'Developed a CNN-based identity verification system',
+                    'Designed a model that determines whether an input image exists in the dataset and identifies the most similar person with similarity percentage',
+                    'Achieved high accuracy in real-time facial identification tasks'
+                ],
+                project2Title: 'Duysens: Arduino-Based Warning System for Vertigo Patients',
+                project2List: [
+                    'Designed a hybrid hardware-software system to enhance safety for individuals with vertigo',
+                    'The Arduino-based device detects when a movement threshold is exceeded and alerts the user',
+                    'Enables users to leave the environment safely before their condition worsens'
+                ],
+                project3Title: 'Articulate – Interactive Educational Content Application',
+                project3List: [
+                    'Developed an interactive content application focused on educational demonstrations',
+                    'Created an engaging interface introducing TensorFlow\'s fundamental concepts to enhance user understanding',
+                    'Built learning modules supported by practical examples'
+                ],
+                project4Title: 'Meteorological Forecasting and Smart Chatbot System Using NASA Data',
+                project4List: [
+                    'Built a web application generating meteorological forecasts using NASA POWER API data',
+                    'Developed the backend with Python and Flask, implemented the frontend using HTML, CSS, and JavaScript',
+                    'Integrated a chatbot providing personalized recommendations based on 5-day weather forecasts'
+                ],
+                skillsTitle: '💡 Technical Skills',
+                skill1Title: 'Programming Languages',
+                skill2Title: 'Frameworks & Tools',
+                skill3Title: 'Expertise Areas',
+                skill3Text: 'Artificial Intelligence • Deep Learning • Embedded Systems • Web Development',
+                skill4Title: 'Languages',
+                skill4Text: 'Turkish (Native) • English (Intermediate)',
+                educationTitle: '🎓 Education',
+                eduDept: 'Department:',
+                eduPeriod: 'Period:',
+                eduDate: 'September 2022 - June 2026'
+            }
+        };
+
+        let currentLang = 'tr';
+        let isDarkMode = false;
+
+        const themeToggle = document.getElementById('themeToggle');
+        const langToggle = document.getElementById('langToggle');
+
+        themeToggle.addEventListener('click', () => {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode');
+            themeToggle.textContent = isDarkMode ? translations[currentLang].themeBtnDark : translations[currentLang].themeBtn;
+        });
+
+        langToggle.addEventListener('click', () => {
+            currentLang = currentLang === 'tr' ? 'en' : 'tr';
+            updateLanguage();
+        });
+
+        function updateLanguage() {
+            const t = translations[currentLang];
+
+            langToggle.textContent = t.langBtn;
+            themeToggle.textContent = isDarkMode ? t.themeBtnDark : t.themeBtn;
+
+            document.getElementById('title').textContent = t.title;
+            document.getElementById('location').textContent = t.location;
+            document.getElementById('projectsTitle').textContent = t.projectsTitle;
+
+            document.getElementById('project1Title').textContent = t.project1Title;
+            updateList('project1List', t.project1List);
+
+            document.getElementById('project2Title').textContent = t.project2Title;
+            updateList('project2List', t.project2List);
+
+            document.getElementById('project3Title').textContent = t.project3Title;
+            updateList('project3List', t.project3List);
+
+            document.getElementById('project4Title').textContent = t.project4Title;
+            updateList('project4List', t.project4List);
+
+            document.getElementById('skillsTitle').textContent = t.skillsTitle;
+            document.getElementById('skill1Title').textContent = t.skill1Title;
+            document.getElementById('skill2Title').textContent = t.skill2Title;
+            document.getElementById('skill3Title').textContent = t.skill3Title;
+            document.getElementById('skill3Text').textContent = t.skill3Text;
+            document.getElementById('skill4Title').textContent = t.skill4Title;
+            document.getElementById('skill4Text').textContent = t.skill4Text;
+
+            document.getElementById('educationTitle').textContent = t.educationTitle;
+            document.getElementById('eduDept').textContent = t.eduDept;
+            document.getElementById('eduPeriod').textContent = t.eduPeriod;
+            document.getElementById('eduDate').textContent = t.eduDate;
+        }
+
+        function updateList(listId, items) {
+            const list = document.getElementById(listId);
+            list.innerHTML = '';
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                list.appendChild(li);
+            });
+        }
+    </script>
+</body>
+</html>
