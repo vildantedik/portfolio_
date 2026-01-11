@@ -318,6 +318,19 @@
 
                 <div class="project-grid">
                     <div class="project-card">
+                        <h3 id="project5Title">Otonom İniş Sistemlerinde Kötü Hava Koşullarında Doğru İniş Manevralarının Gerçekleştirilmesi</h3>
+                        <p class="tech-stack">DeepLabV3+ • YOLOv8 • Depth Anything V2 • EfficientNetV2-M • PyTorch • TensorFlow • TensorRT • Albumentations</p>
+                        <ul id="project5List">
+                            <li>Sis, yağmur ve düşük görüş gibi zorlu hava koşullarında uçakların güvenli iniş yapabilmesi için çok modüllü derin öğrenme tabanlı görsel algı sistemi geliştirildi.</li>
+                            <li>Pist segmentasyonu (DeepLabV3+), engel tespiti (YOLOv8), derinlik tahmini (Depth Anything V2) ve hava durumu sınıflandırması (EfficientNetV2-M) entegre eden bir mimari tasarlandı.</li>
+                            <li>Model füzyonu (mantık kuralları + Kalman Filter) ile pilota durumsal farkındalık sunan karar destek sistemi oluşturuldu.</li>
+                            <li>TensorRT optimizasyonu ile gerçek zamanlı çalışabilen yüksek hızlı inference pipeline hazırlandı.</li>
+                            <li>Albumentations ile veri artırma teknikleri uygulanarak modelin zorlu koşullara karşı dayanıklılığı artırıldı.</li>
+                            <li>Monte Carlo Dropout ile modelin belirsizlik skorları hesaplanarak kritik senaryolarda güven seviyesi analiz edildi.</li>
+                        </ul>
+                    </div>
+
+                    <div class="project-card">
                         <h3 id="project1Title">Derin Öğrenme Tabanlı Yüz Tanıma Sistemi</h3>
                         <p class="tech-stack">Python • TensorFlow • Keras • NumPy • Matplotlib</p>
                         <ul id="project1List">
@@ -371,11 +384,11 @@
                     </div>
                     <div class="skill-category">
                         <h3 id="skill2Title">Framework & Araçlar</h3>
-                        <p>OpenCv•TensorFlow • Keras • Qt • Flask • React</p>
+                        <p>OpenCV • TensorFlow • Keras • PyTorch • Qt • Flask • React • TensorRT</p>
                     </div>
                     <div class="skill-category">
                         <h3 id="skill3Title">Uzmanlık Alanları</h3>
-                        <p id="skill3Text">Yapay Zeka • Derin Öğrenme • Gömülü Sistemler • Web Geliştirme</p>
+                        <p id="skill3Text">Yapay Zeka • Derin Öğrenme • Bilgisayarlı Görü • Gömülü Sistemler • Web Geliştirme</p>
                     </div>
                     <div class="skill-category">
                         <h3 id="skill4Title">Diller</h3>
@@ -403,7 +416,16 @@
                 langBtn: '🌐 English',
                 title: 'Bilgisayar Mühendisi | Yapay Zeka',
                 location: '📍 Ankara, Türkiye',
-                projectsTitle: '🎯 Projeler ve Başarılar',
+                projectsTitle: '🎯 Projeler',
+                project5Title: 'Otonom İniş Sistemlerinde Kötü Hava Koşullarında Doğru İniş Manevralarının Gerçekleştirilmesi',
+                project5List: [
+                    'Sis, yağmur ve düşük görüş gibi zorlu hava koşullarında uçakların güvenli iniş yapabilmesi için çok modüllü derin öğrenme tabanlı görsel algı sistemi geliştirildi',
+                    'Pist segmentasyonu (DeepLabV3+), engel tespiti (YOLOv8), derinlik tahmini (Depth Anything V2) ve hava durumu sınıflandırması (EfficientNetV2-M) entegre eden bir mimari tasarlandı',
+                    'Model füzyonu (mantık kuralları + Kalman Filter) ile pilota durumsal farkındalık sunan karar destek sistemi oluşturuldu',
+                    'TensorRT optimizasyonu ile gerçek zamanlı çalışabilen yüksek hızlı inference pipeline hazırlandı',
+                    'Albumentations ile veri artırma teknikleri uygulanarak modelin zorlu koşullara karşı dayanıklılığı artırıldı',
+                    'Monte Carlo Dropout ile modelin belirsizlik skorları hesaplanarak kritik senaryolarda güven seviyesi analiz edildi'
+                ],
                 project1Title: 'Derin Öğrenme Tabanlı Yüz Tanıma Sistemi',
                 project1List: [
                     'CNN (Evrişimsel Sinir Ağı) tabanlı kimlik doğrulama sistemi geliştirildi',
@@ -432,7 +454,7 @@
                 skill1Title: 'Programlama Dilleri',
                 skill2Title: 'Framework & Araçlar',
                 skill3Title: 'Uzmanlık Alanları',
-                skill3Text: 'Yapay Zeka • Derin Öğrenme • Gömülü Sistemler • Web Geliştirme',
+                skill3Text: 'Yapay Zeka • Derin Öğrenme • Bilgisayarlı Görü • Gömülü Sistemler • Web Geliştirme',
                 skill4Title: 'Diller',
                 skill4Text: 'Türkçe (Ana Dil) • İngilizce (Orta Seviye)',
                 educationTitle: '🎓 Eğitim',
@@ -447,6 +469,15 @@
                 title: 'Computer Engineer | Artificial Intelligence',
                 location: '📍 Ankara, Turkey',
                 projectsTitle: '🎯 Projects',
+                project5Title: 'Autonomous Landing System for Safe Aircraft Landing in Adverse Weather Conditions',
+                project5List: [
+                    'Developed a multi-module deep learning-based visual perception system for safe aircraft landing in challenging weather conditions such as fog, rain, and low visibility',
+                    'Designed an integrated architecture combining runway segmentation (DeepLabV3+), obstacle detection (YOLOv8), depth estimation (Depth Anything V2), and weather classification (EfficientNetV2-M)',
+                    'Created a decision support system providing situational awareness to pilots through model fusion (logic rules + Kalman Filter) in a unified interface',
+                    'Built a high-speed inference pipeline capable of real-time operation with TensorRT optimization',
+                    'Enhanced model robustness against challenging conditions by applying realistic data augmentation techniques using Albumentations',
+                    'Analyzed confidence levels in critical scenarios by calculating model uncertainty scores with Monte Carlo Dropout'
+                ],
                 project1Title: 'Deep Learning-Based Face Recognition System',
                 project1List: [
                     'Developed a CNN-based identity verification system',
@@ -475,7 +506,7 @@
                 skill1Title: 'Programming Languages',
                 skill2Title: 'Frameworks & Tools',
                 skill3Title: 'Expertise Areas',
-                skill3Text: 'Artificial Intelligence • Deep Learning • Embedded Systems • Web Development',
+                skill3Text: 'Artificial Intelligence • Deep Learning • Computer Vision • Embedded Systems • Web Development',
                 skill4Title: 'Languages',
                 skill4Text: 'Turkish (Native) • English (Intermediate)',
                 educationTitle: '🎓 Education',
@@ -511,6 +542,9 @@
             document.getElementById('title').textContent = t.title;
             document.getElementById('location').textContent = t.location;
             document.getElementById('projectsTitle').textContent = t.projectsTitle;
+
+            document.getElementById('project5Title').textContent = t.project5Title;
+            updateList('project5List', t.project5List);
 
             document.getElementById('project1Title').textContent = t.project1Title;
             updateList('project1List', t.project1List);
