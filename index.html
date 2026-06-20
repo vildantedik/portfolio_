@@ -454,7 +454,7 @@
                         <span class="experience-date" id="expDate">2 Şubat 2026 – 24 Mayıs 2026</span>
                     </div>
                     <p class="experience-location" id="expLocation">📍 Ankara, Türkiye</p>
-                    <p class="experience-desc" id="expDesc">ROS2 tabanlı sistemler üzerinde çalışıldı; Gazebo ve SITL ortamlarında PX4/ArduPilot tabanlı simülasyonlar gerçekleştirildi. QGroundControl ile yer kontrol istasyonu entegrasyonu incelendi ve MAVLink protokolü üzerinden haberleşme, failsafe senaryoları ile Kalman filtresi tabanlı durum tahmini konularında deneyim kazanıldı.</p>
+                    <p class="experience-desc" id="expDesc">ROS2 tabanlı sistemler üzerinde çalışıldı; Gazebo ve SITL ortamlarında PX4/ArduPilot tabanlı simülasyonlar gerçekleştirildi. IMU verileri üzerinde çalışılarak Kalman filtresi tabanlı durum tahmini gerçekleştirildi. QGroundControl ile yer kontrol istasyonu entegrasyonu incelendi ve MAVLink protokolü üzerinden haberleşme, failsafe senaryoları konularında deneyim kazanıldı. Ayrıca Raspberry Pi üzerinde donanımsal entegrasyon ve sistemin çalıştırılması süreçlerinde görev alındı.</p>
                     <div class="tech-tags" id="expTags">
                         <span class="tech-tag">ROS2</span>
                         <span class="tech-tag">Gazebo</span>
@@ -463,8 +463,11 @@
                         <span class="tech-tag">SITL</span>
                         <span class="tech-tag">QGroundControl</span>
                         <span class="tech-tag">MAVLink</span>
+                        <span class="tech-tag">IMU</span>
                         <span class="tech-tag">Kalman Filtresi</span>
                         <span class="tech-tag">Failsafe Sistemleri</span>
+                        <span class="tech-tag">Raspberry Pi</span>
+                        <span class="tech-tag">Donanım Entegrasyonu</span>
                     </div>
                 </div>
             </div>
@@ -549,7 +552,8 @@
                 expRole: 'Stajyer Yazılım Mühendisi',
                 expDate: '2 Şubat 2026 – 24 Mayıs 2026',
                 expLocation: '📍 Ankara, Türkiye',
-                expDesc: 'ROS2 tabanlı sistemler üzerinde çalışıldı; Gazebo ve SITL ortamlarında PX4/ArduPilot tabanlı simülasyonlar gerçekleştirildi. QGroundControl ile yer kontrol istasyonu entegrasyonu incelendi ve MAVLink protokolü üzerinden haberleşme, failsafe senaryoları ile Kalman filtresi tabanlı durum tahmini konularında deneyim kazanıldı.',
+                expDesc: 'ROS2 tabanlı sistemler üzerinde çalışıldı; Gazebo ve SITL ortamlarında PX4/ArduPilot tabanlı simülasyonlar gerçekleştirildi. IMU verileri üzerinde çalışılarak Kalman filtresi tabanlı durum tahmini gerçekleştirildi. QGroundControl ile yer kontrol istasyonu entegrasyonu incelendi ve MAVLink protokolü üzerinden haberleşme, failsafe senaryoları konularında deneyim kazanıldı. Ayrıca Raspberry Pi üzerinde donanımsal entegrasyon ve sistemin çalıştırılması süreçlerinde görev alındı.',
+                expTags: ['ROS2', 'Gazebo', 'PX4', 'ArduPilot', 'SITL', 'QGroundControl', 'MAVLink', 'IMU', 'Kalman Filtresi', 'Failsafe Sistemleri', 'Raspberry Pi', 'Donanım Entegrasyonu'],
                 skillsTitle: '💡 Teknik Yetenekler',
                 skill1Title: 'Programlama Dilleri',
                 skill2Title: 'Framework & Araçlar',
@@ -607,7 +611,8 @@
                 expRole: 'Software Engineering Intern',
                 expDate: 'February 2, 2026 – May 24, 2026',
                 expLocation: '📍 Ankara, Turkey',
-                expDesc: 'Work was conducted on ROS2-based systems; PX4/ArduPilot-based simulations were carried out in Gazebo and SITL environments. Ground control station integration was examined with QGroundControl, and experience was gained in MAVLink-based communication, failsafe scenarios, and Kalman filter-based state estimation.',
+                expDesc: 'Work was conducted on ROS2-based systems; PX4/ArduPilot-based simulations were carried out in Gazebo and SITL environments. IMU data was processed for Kalman filter-based state estimation. Ground control station integration was examined with QGroundControl, and experience was gained in MAVLink-based communication and failsafe scenarios. Hardware integration and system deployment were also carried out on Raspberry Pi.',
+                expTags: ['ROS2', 'Gazebo', 'PX4', 'ArduPilot', 'SITL', 'QGroundControl', 'MAVLink', 'IMU', 'Kalman Filter', 'Failsafe Systems', 'Raspberry Pi', 'Hardware Integration'],
                 skillsTitle: '💡 Technical Skills',
                 skill1Title: 'Programming Languages',
                 skill2Title: 'Frameworks & Tools',
@@ -670,6 +675,7 @@
             document.getElementById('expDate').textContent = t.expDate;
             document.getElementById('expLocation').textContent = t.expLocation;
             document.getElementById('expDesc').textContent = t.expDesc;
+            updateTags('expTags', t.expTags);
 
             document.getElementById('skillsTitle').textContent = t.skillsTitle;
             document.getElementById('skill1Title').textContent = t.skill1Title;
@@ -692,6 +698,17 @@
                 const li = document.createElement('li');
                 li.textContent = item;
                 list.appendChild(li);
+            });
+        }
+
+        function updateTags(containerId, tags) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = '';
+            tags.forEach(tag => {
+                const span = document.createElement('span');
+                span.className = 'tech-tag';
+                span.textContent = tag;
+                container.appendChild(span);
             });
         }
     </script>
