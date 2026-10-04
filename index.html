@@ -17,7 +17,7 @@ aside{position:sticky;top:16px;height:calc(100vh - 32px);background:var(--panel)
 aside img{width:100%;height:260px;object-fit:cover;object-position:center top}
 .id{padding:20px 20px 8px}
 .id h1{font-size:1.7rem;line-height:1.1}
-.id p{color:var(--mute);margin-top:6px}
+.id p{color:var(--mute);margin-top:6px;font-size:.85rem}
 nav{padding:8px 0;flex:1}
 nav a{display:block;padding:9px 20px;border-left:3px solid transparent;color:var(--mute)}
 nav a:hover,nav a.on{color:var(--text);border-color:var(--accent);background:#141e31}
@@ -55,23 +55,17 @@ h2{font-size:1.15rem;margin-bottom:16px}
 .tl small{color:var(--accent)}
 .tl h3{font-size:1.05rem}
 .tl p{color:var(--mute);margin:6px 0 10px}
-.row{display:grid;grid-template-columns:1.1fr .8fr 1.4fr;gap:16px}
-.row section{padding:20px}
 .skill{margin-bottom:12px}
 .skill b{display:block;font-weight:500;font-size:.85rem;color:var(--mute);margin-bottom:6px}
-.lang{margin-bottom:16px}
-.lang div{display:flex;justify-content:space-between;font-size:.9rem}
-.lang i{display:block;height:5px;border-radius:3px;background:var(--line);margin-top:6px}
-.lang i:after{content:"";display:block;height:100%;border-radius:3px;background:var(--blue);width:var(--w)}
-.certs{display:grid;grid-template-columns:1fr 150px;gap:16px;padding:0!important;overflow:hidden}
-.certs>div{padding:20px}
-.certs ul{list-style:none;display:grid;gap:10px;font-size:.88rem}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px 28px}
+.skills .skill{margin:0}
+.certs{display:grid;grid-template-columns:1fr 280px;gap:28px;align-items:center}
+.certs ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;font-size:.88rem}
 .certs li span{display:block;color:var(--mute);font-size:.8rem}
-.certs img{width:100%;height:100%;object-fit:cover}
+.certs img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center;border-radius:10px;border:1px solid var(--line);display:block}
 .contact{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center}
 .contact a:hover{color:var(--accent)}
-@media(max-width:1100px){.row{grid-template-columns:1fr 1fr}.certs{grid-column:1/-1}}
-@media(max-width:860px){body{grid-template-columns:1fr}aside{position:static;height:auto;flex-direction:row;flex-wrap:wrap}aside img{width:120px;height:120px}.id{flex:1;padding:16px}nav{display:flex;flex-wrap:wrap;flex-basis:100%;order:3;padding:0 8px}nav a{padding:8px 12px;border:0}.tools{order:2;padding:16px}.about,.row,.certs{grid-template-columns:1fr}.certs img{height:200px}}
+@media(max-width:860px){body{grid-template-columns:1fr}aside{position:static;height:auto;flex-direction:row;flex-wrap:wrap}aside img{width:120px;height:120px}.id{flex:1;padding:16px}nav{display:flex;flex-wrap:wrap;flex-basis:100%;order:3;padding:0 8px}nav a{padding:8px 12px;border:0}.tools{order:2;padding:16px}.about,.certs{grid-template-columns:1fr}.certs ul{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
@@ -127,18 +121,15 @@ h2{font-size:1.15rem;margin-bottom:16px}
   </div>
 </section>
 
-<div class="row" id="skills">
-  <section>
-    <h2 data-en="Skills">Yetenekler</h2><div class="skill"><b data-en="Programming">Programlama</b><div class="tags"><span class="chip">Python</span><span class="chip">C/C++</span><span class="chip">C#</span><span class="chip">Java</span><span class="chip">JavaScript</span></div></div><div class="skill"><b data-en="AI & vision">Yapay zekâ & görü</b><div class="tags"><span class="chip">Machine Learning</span><span class="chip">Deep Learning</span><span class="chip">Computer Vision</span><span class="chip">Object Detection</span><span class="chip">Data Augmentation</span><span class="chip">PyTorch/TensorFlow/Keras</span><span class="chip">OpenCV</span><span class="chip">TensorRT</span></div></div><div class="skill"><b data-en="Robotics & estimation">Robotik & kestirim</b><div class="tags"><span class="chip">Embedded Systems</span><span class="chip">ROS 2</span><span class="chip">MAVLink</span><span class="chip">SLAM</span><span class="chip">Kalman Filter</span><span class="chip">Sensor Fusion</span></div></div><div class="skill"><b data-en="Web & tools">Web & araçlar</b><div class="tags"><span class="chip">Flask/React/HTML/CSS</span><span class="chip">API Integration</span><span class="chip">Git/GitHub</span><span class="chip">Articulate Storyline</span></div></div></section>
-  <section>
-    <h2 data-en="Languages">Diller</h2>
-    <div class="lang"><div><span data-en="Turkish">Türkçe</span><span data-en="Native">Ana dil</span></div><i style="--w:100%"></i></div>
-    <div class="lang"><div><span data-en="English">İngilizce</span><span data-en="Intermediate">Orta seviye</span></div><i style="--w:60%"></i></div>
-  </section>
-  <section class="certs" id="certs">
-    <div>
-      <h2 data-en="Certificates">Sertifikalar</h2>
-      <ul>
+<section id="skills">
+  <h2 data-en="Skills">Yetenekler</h2>
+  <div class="skills"><div class="skill"><b data-en="Programming">Programlama</b><div class="tags"><span class="chip">Python</span><span class="chip">C/C++</span><span class="chip">C#</span><span class="chip">Java</span><span class="chip">JavaScript</span></div></div><div class="skill"><b data-en="AI & vision">Yapay zekâ & görü</b><div class="tags"><span class="chip">Machine Learning</span><span class="chip">Deep Learning</span><span class="chip">Computer Vision</span><span class="chip">Object Detection</span><span class="chip">Data Augmentation</span><span class="chip">PyTorch/TensorFlow/Keras</span><span class="chip">OpenCV</span><span class="chip">TensorRT</span></div></div><div class="skill"><b data-en="Robotics & estimation">Robotik & kestirim</b><div class="tags"><span class="chip">Embedded Systems</span><span class="chip">ROS 2</span><span class="chip">MAVLink</span><span class="chip">SLAM</span><span class="chip">Kalman Filter</span><span class="chip">Sensor Fusion</span></div></div><div class="skill"><b data-en="Web & tools">Web & araçlar</b><div class="tags"><span class="chip">Flask/React/HTML/CSS</span><span class="chip">API Integration</span><span class="chip">Git/GitHub</span><span class="chip">Articulate Storyline</span></div></div><div class="skill"><b data-en="Languages">Diller</b><div class="tags"><span class="chip"><span data-en="Turkish">Türkçe</span> · <span data-en="Native">Ana dil</span></span><span class="chip"><span data-en="English">İngilizce</span> · <span data-en="Intermediate">Orta seviye</span></span></div></div></div>
+</section>
+
+<section class="certs" id="certs">
+  <div>
+    <h2 data-en="Certificates">Sertifikalar</h2>
+    <ul>
         <li>TEI Havacılık Motorları Okulu<span>Türk Havacılık ve Uzay Sanayii (TEI)</span></li>
         <li>Kariyer ve Yetkinlik Buluşmaları 2<span>Savunma Sanayi Akademi</span></li>
         <li>Teknoloji ve İnovasyon Etkinliği<span>Enerjisa</span></li>
@@ -146,10 +137,9 @@ h2{font-size:1.15rem;margin-bottom:16px}
         <li>Kişiselleştirilmiş GPT’ler<span>BTK Akademi</span></li>
         <li>Articulate Storyline Atölyesi<span>BTK Akademi</span></li>
       </ul>
-    </div>
-    <img src="https://raw.githubusercontent.com/vildantedik/portfolio-images/main/foto-2.jpg" alt="">
-  </section>
-</div>
+  </div>
+  <img src="https://raw.githubusercontent.com/vildantedik/portfolio-images/main/foto-2.jpg" alt="Arduino ile çalışırken">
+</section>
 
 <section id="contact">
   <div class="contact">
